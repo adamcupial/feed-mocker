@@ -1,5 +1,5 @@
 import { Feed } from './feed.js';
-import { logger } from './utils.js';
+import { logger } from '../utils.js';
 
 export class FeedContainer {
   constructor (manifest, directory) {

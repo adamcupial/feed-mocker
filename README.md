@@ -12,8 +12,15 @@ npm install
 
 ## Usage
 
+### Record
+
 ```bash
-npm start -- <FEED DIRECTORY>
+npm start -- record <DIR> [--port=8080]
+```
+### Replay
+
+```bash
+npm start -- replay <DIR> [--port=8080]
 ```
 
 ## Feed Directory
