@@ -20,7 +20,7 @@ npm start -- <FEED DIRECTORY>
 
 Is a directory with manifest.json file which describes feeds responses, example one:
 
-```json
+```json5
 {
   \\ name of the feed mock
   "api-example": { 
