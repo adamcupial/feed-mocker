@@ -17,11 +17,16 @@ npm install
 ```bash
 npm start -- record <DIR> [--port=8080]
 ```
+
+Then just configure it as a proxy into postman or system-wide, it'll record all requests passed through it.
+
 ### Replay
 
 ```bash
 npm start -- replay <DIR> [--port=8080]
 ```
+
+For each request made to it, replay with respond with pre-recorded response based on that record pattern
 
 ## Feed Directory
 
