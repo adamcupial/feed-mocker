@@ -122,5 +122,7 @@ dist
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode,node
-/records
-!/records/example_record
+!/records
+records/*
+!/records/example_record/
+!/records/example_record/*
