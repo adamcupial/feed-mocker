@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fld last-updated="{{now -10 'days' 'YYYY-MM-DD HH:mm:ss'}}">
+<param name="whatever" last-published="{{today}}"/>
+</fld>

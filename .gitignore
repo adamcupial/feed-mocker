@@ -124,5 +124,5 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/vscode,node
 !/records
 records/*
-!/records/example_record/
-!/records/example_record/*
+!/records/example
+!/records/example/*
