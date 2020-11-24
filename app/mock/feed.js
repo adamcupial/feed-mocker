@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { logger } from './utils.js';
+import { logger } from '../utils.js';
 import { transform } from './template.js';
 
 export class Feed {

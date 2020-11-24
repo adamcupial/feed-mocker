@@ -7,15 +7,18 @@
   "scripts": {
     "lint": "eslint",
     "start": "node app/index.js",
-    "start:dev": "nodemon app/index.js"
+    "start:dev": "nodemon --watch app app/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "handlebars": "^4.7.6",
+    "http-proxy": "^1.18.1",
     "moment": "^2.29.1",
-    "winston": "^3.3.3"
+    "uuid": "^8.3.1",
+    "winston": "^3.3.3",
+    "yargs": "^16.1.1"
   },
   "devDependencies": {
     "eslint": "^7.14.0",

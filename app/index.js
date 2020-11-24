@@ -1,29 +1,43 @@
 import path from 'path';
-import http from 'http';
-import { readFileSync } from 'fs';
-import { FeedContainer } from './feed-container.js';
-import { logger } from './utils.js';
 
-function main (dir) {
-  const directory = path.resolve(dir);
-  const manifest = JSON.parse(readFileSync(path.join(directory, 'manifest.json')));
+import yargs from 'yargs';
 
-  const feedContainer = new FeedContainer(manifest, directory);
-  const server = http.createServer(async (req, res) => {
-    const { statusCode, body, headers } = await feedContainer.getFeedResponseForUri(req.url);
-    res.statusCode = statusCode;
-    headers.forEach(([name, value]) => {
-      res.setHeader(name, value);
-    });
-    res.end(body);
-  });
+import { start as recordStart } from './record/index.js';
+import { start as mockStart } from './mock/index.js';
 
-  const port = process.env.port || 8080;
-
-  server.listen(port, () => {
-    logger.info(`App listening on ${port}`);
-  });
-}
-
-const [,, dir] = process.argv;
-main(dir);
+// eslint-disable-next-line no-unused-expressions
+yargs(process.argv.slice(2))
+  .command('record <dir>', 'start the recording proxy', (yarg) => {
+    yarg
+      .positional('dir', {
+        describe: 'directory to save to',
+        type: 'string',
+        coerce: (arg) => path.resolve(arg),
+      })
+      .option('p', {
+        alias: 'port',
+        default: 8080,
+        type: 'number',
+      });
+  }, (argv) => {
+    recordStart(argv.dir, argv.port);
+  })
+  .command('replay <dir> [options]', 'start the mock replay', (yarg) => {
+    yarg
+      .positional('dir', {
+        describe: 'directory to play from',
+        type: 'string',
+        coerce: (arg) => path.resolve(arg),
+      })
+      .option('p', {
+        alias: 'port',
+        default: 8080,
+        type: 'number',
+      });
+  }, (argv) => {
+    mockStart(argv.dir, argv.port);
+  })
+  .demandCommand()
+  .help()
+  .wrap(72)
+  .argv;
